@@ -1,0 +1,45 @@
+{
+  "name": "cap-extensibility-app",
+  "version": "1.0.0",
+  "description": "A simple CAP project.",
+  "repository": "cap-extensibility-app",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "@sap/cds": "^6",
+    "@sap/cds-mtxs": "^1",
+    "express": "^4",
+    "passport": ">=0.4.1"
+  },
+  "devDependencies": {
+    "@sap/eslint-plugin-ui5-jsdocs": "^2.0.5",
+    "@sap/ux-specification": "^1.108.1",
+    "@sapui5/ts-types": "^1.92.2",
+    "eslint": "^7.32.0",
+    "sqlite3": "^5.0.4"
+  },
+  "scripts": {
+    "start": "cds run",
+    "watch": "cds watch --open books/webapp/index.html?sap-ui-xx-viewCache=false"
+  },
+  "sapux": [
+    "app/books"
+  ],
+  "cds": {
+    "requires": {
+      "db": "sql",
+      
+      "auth": {
+        "users": {
+          "carol": { "tenant": "t1" },
+          "erin":  { "tenant": "t2" },
+          "fred":  { "tenant": "t2", "features":[] }
+        },
+        "tenants": {
+          "t1": { "features": [] },
+          "t2": { "features": "*" }
+        }
+      }
+    }
+  }
+}
